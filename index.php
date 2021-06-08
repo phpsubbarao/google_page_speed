@@ -23,7 +23,7 @@ $sheet->setCellValue('B1', 'Desktop');
 $sheet->setCellValue('C1', 'Mobile');
 $sheet->setCellValue('D1', 'Date');
 
-$str = file_get_contents('tz_list.json');
+$str = file_get_contents('list.json');
 $json = json_decode($str, true); // decode the JSON into an associative array
 
 
@@ -50,7 +50,7 @@ foreach ($json as $key => $value) {
   $sheet->setCellValue('C'.$keys, $mobile);
   $sheet->setCellValue('D'.$keys, date('Y-m-d H:i:s'));
   $writer = new Xlsx($spreadsheet);
-  $writer->save('trianz_google_page_speed_'.date('Y_m_d').'.xlsx');
+  $writer->save('google_page_speed_'.date('Y_m_d').'.xlsx');
   flush();
   ob_flush();
   sleep(1);
